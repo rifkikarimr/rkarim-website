@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex flex-col items-center">
           <div className="flex items-center space-x-2 mb-4">
             <Cloud className="w-6 h-6 text-blue-400" />
-            <span className="text-lg font-semibold">Cloud Portfolio</span>
+            <span className="text-lg font-semibold">My Portfolio</span>
           </div>
 
           <p className="text-gray-400 text-sm mb-4 flex items-center space-x-2">

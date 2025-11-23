@@ -12,11 +12,11 @@ interface Project {
 const projects: Project[] = [
   {
     id: '1',
-    name: 'Cloud Infrastructure Automation',
+    name: 'Maintain Cloud Infrastructure',
     description: 'Designed and implemented automated infrastructure deployment across AWS, GCP, and Azure using Terraform and CI/CD pipelines.',
     technologies: ['Terraform', 'AWS', 'GCP', 'Azure', 'Alibaba Cloud', 'GitHub Actions', 'Docker', 'Kubernetes', 'Jenkins'],
     outcome: 'Reduced deployment time by 75% and eliminated manual configuration errors.',
-    link: '#',
+    link: 'https://www.canva.com/design/DAGsmJCMLpI/cO1uyVgkz85f-gqXSMVZ3g/view?utm_content=DAGsmJCMLpI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdda365365e',
   },
   {
     id: '2',
@@ -24,7 +24,7 @@ const projects: Project[] = [
     description: 'Built comprehensive monitoring and alerting system using Prometheus, Grafana, and ELK stack for distributed microservices.',
     technologies: ['Prometheus', 'Grafana', 'ELK Stack', 'Kubernetes', 'Kong API Gateway'],
     outcome: 'Improved system reliability to 99.9% uptime and reduced MTTR by 60% through proactive monitoring.',
-    link: '#',
+    link: 'https://rkarimmm.my.canva.site/'
   },
   {
     id: '3',
@@ -32,7 +32,7 @@ const projects: Project[] = [
     description: 'Developed secure file transfer system with end-to-end encryption for sensitive data processing and SAP integration.',
     technologies: ['SFTP', 'AES Encryption', 'SAP', 'Python', 'AWS S3', 'Lambda'],
     outcome: 'Processed 1TB+ daily data transfers with zero security incidents.',
-    link: '#',
+    link: 'https://github.com/rifkikarimr/tf-file-sftp.git',
   },
 ];
 

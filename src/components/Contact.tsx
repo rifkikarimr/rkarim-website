@@ -21,11 +21,11 @@ export default function Contact() {
                 <Mail className="w-8 h-8" />
               </div>
               <h3 className="font-semibold mb-2 text-lg">Email</h3>
-              <p className="text-blue-100 text-sm">your.email@example.com</p>
+              <p className="text-blue-100 text-sm">rifkikarimr@gmail.com</p>
             </a>
 
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://linkedin.com/in/rifkikarimr"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all text-center group"
@@ -38,7 +38,7 @@ export default function Contact() {
             </a>
 
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/rifkikarimr"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all text-center group"

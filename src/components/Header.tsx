@@ -20,7 +20,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <Cloud className="text-blue-600 w-8 h-8" />
-            <span className="text-xl font-bold text-gray-800">Cloud Portfolio</span>
+            <span className="text-xl font-bold text-gray-800">My Portfolio</span>
           </div>
 
           <div className="hidden md:flex space-x-8">

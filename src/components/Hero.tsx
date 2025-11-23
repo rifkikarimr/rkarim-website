@@ -15,11 +15,11 @@ export default function Hero() {
           </div>
 
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
-            Cloud Professional
+            Rifki Karim R
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-600 mb-6 max-w-3xl">
-            Cloud & Big Data Specialist | DevOps Engineer | Cloud Architect
+            Cloud | DevOps | SRE
           </p>
 
           <p className="text-lg text-gray-700 mb-8 max-w-2xl leading-relaxed">
