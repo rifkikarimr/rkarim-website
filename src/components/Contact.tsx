@@ -1,6 +1,34 @@
+import React, { useRef, useState } from 'react';
 import { Mail, Linkedin, Github, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+    setStatus('sending');
+
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('Missing EmailJS env variables (VITE_EMAILJS_...)');
+      }
+
+      await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+      setStatus('success');
+      formRef.current.reset();
+    } catch (err) {
+      console.error('Failed to send message', err);
+      setStatus('error');
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
       <div className="container mx-auto px-6">
@@ -57,7 +85,7 @@ export default function Contact() {
               <h3 className="text-2xl font-bold">Send a Message</h3>
             </div>
 
-            <form className="space-y-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Name
@@ -65,6 +93,7 @@ export default function Contact() {
                 <input
                   type="text"
                   id="name"
+                  name="user_name"
                   className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
                   placeholder="Your name"
                 />
@@ -77,6 +106,7 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
+                  name="user_email"
                   className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
                   placeholder="your.email@example.com"
                 />
@@ -88,6 +118,7 @@ export default function Contact() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={4}
                   className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-all resize-none"
                   placeholder="Tell me about your project or inquiry..."
@@ -96,11 +127,20 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center space-x-2"
+                disabled={status === 'sending'}
+                className="w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center space-x-2 disabled:opacity-60"
               >
-                <span>Send Message</span>
+                <span>{status === 'sending' ? 'Sending...' : 'Send Message'}</span>
                 <Send className="w-5 h-5" />
               </button>
+
+              {status === 'success' && (
+                <p className="text-green-200 mt-2">Message sent — thank you! I will reply soon.</p>
+              )}
+
+              {status === 'error' && (
+                <p className="text-red-200 mt-2">Something went wrong. Please try again later.</p>
+              )}
             </form>
           </div>
         </div>
