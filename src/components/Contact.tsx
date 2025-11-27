@@ -12,12 +12,12 @@ export default function Contact() {
     setStatus('sending');
 
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       if (!serviceId || !templateId || !publicKey) {
-        throw new Error('Missing EmailJS env variables (VITE_EMAILJS_...)');
+        throw new Error('Missing EmailJS env variables');
       }
 
       await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
@@ -30,116 +30,188 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+    <section
+      id="contact"
+      className="
+        py-20 
+        bg-gradient-to-br from-blue-600 to-blue-800 text-white 
+        dark:from-gray-900 dark:to-black dark:text-gray-100
+      "
+    >
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-4">
-          Get In Touch
-        </h2>
-        <p className="text-center text-blue-100 mb-12 max-w-2xl mx-auto text-lg">
-          Interested in collaborating or discussing cloud solutions? Feel free to reach out!
+        <h2 className="text-4xl font-bold text-center mb-4">Get In Touch</h2>
+
+        <p className="text-center text-blue-100 dark:text-gray-300 mb-12 max-w-2xl mx-auto text-lg">
+          Interested in collaborating or discussing cloud & platform engineering?
         </p>
 
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+
+          {/* --- SOCIAL GRID --- */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+
+            {/* Email */}
             <a
-              href="mailto:your.email@example.com"
-              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all text-center group"
+              href="mailto:rifkikarimr@gmail.com"
+              className="
+                bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center group 
+                hover:bg-white/20 transition-all 
+                dark:bg-gray-800/40 dark:hover:bg-gray-700/50
+              "
             >
-              <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+              <div className="
+                bg-white/20 dark:bg-gray-600/40 
+                w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 
+                group-hover:scale-110 transition-transform
+              ">
                 <Mail className="w-8 h-8" />
               </div>
               <h3 className="font-semibold mb-2 text-lg">Email</h3>
-              <p className="text-blue-100 text-sm">rifkikarimr@gmail.com</p>
+              <p className="text-blue-100 dark:text-gray-300 text-sm">rifkikarimr@gmail.com</p>
             </a>
 
+            {/* LinkedIn */}
             <a
               href="https://linkedin.com/in/rifkikarimr"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all text-center group"
+              className="
+                bg-white/10 dark:bg-gray-800/40 
+                backdrop-blur-sm rounded-xl p-6 text-center group 
+                hover:bg-white/20 dark:hover:bg-gray-700/50 transition-all
+              "
             >
-              <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+              <div className="
+                bg-white/20 dark:bg-gray-600/40 
+                w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform
+              ">
                 <Linkedin className="w-8 h-8" />
               </div>
               <h3 className="font-semibold mb-2 text-lg">LinkedIn</h3>
-              <p className="text-blue-100 text-sm">Connect with me</p>
+              <p className="text-blue-100 dark:text-gray-300 text-sm">Connect with me</p>
             </a>
 
+            {/* GitHub */}
             <a
               href="https://github.com/rifkikarimr"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all text-center group"
+              className="
+                bg-white/10 dark:bg-gray-800/40 
+                backdrop-blur-sm rounded-xl p-6 text-center group 
+                hover:bg-white/20 dark:hover:bg-gray-700/50 transition-all
+              "
             >
-              <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+              <div className="
+                bg-white/20 dark:bg-gray-600/40 
+                w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform
+              ">
                 <Github className="w-8 h-8" />
               </div>
               <h3 className="font-semibold mb-2 text-lg">GitHub</h3>
-              <p className="text-blue-100 text-sm">Check out my projects</p>
+              <p className="text-blue-100 dark:text-gray-300 text-sm">See my work</p>
+            </a>
+
+            {/* HuggingFace */}
+            <a
+              href="https://huggingface.co/rifkikarimr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center group 
+                hover:bg-white/20 transition-all 
+                dark:bg-gray-800/40 dark:hover:bg-gray-700/50
+              "
+            >
+              <div className="
+                bg-white/20 dark:bg-gray-600/40 
+                w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform
+              ">
+                <img
+                  src="https://huggingface.co/front/assets/huggingface_logo.svg"
+                  alt="Hugging Face"
+                  className="w-9 h-9"
+                />
+              </div>
+              <h3 className="font-semibold mb-2 text-lg">HuggingFace</h3>
+              <p className="text-blue-100 dark:text-gray-300 text-sm">AI & ML Spaces</p>
             </a>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+          {/* --- CONTACT FORM --- */}
+          <div className="
+            bg-white/10 backdrop-blur-sm rounded-xl p-8 
+            dark:bg-gray-800/50 dark:border dark:border-gray-700
+          ">
             <div className="flex items-center space-x-3 mb-6">
               <Send className="w-6 h-6" />
               <h3 className="text-2xl font-bold">Send a Message</h3>
             </div>
 
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Name
-                </label>
+                <label className="block text-sm font-medium mb-2">Name</label>
                 <input
                   type="text"
-                  id="name"
                   name="user_name"
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
-                  placeholder="Your name"
+                  className="
+                    w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 
+                    focus:ring-2 focus:border-white 
+                    dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-400
+                  "
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
-                </label>
+                <label className="block text-sm font-medium mb-2">Email</label>
                 <input
                   type="email"
-                  id="email"
                   name="user_email"
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
-                  placeholder="your.email@example.com"
+                  className="
+                    w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 
+                    focus:ring-2 focus:border-white 
+                    dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-400
+                  "
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
+                <label className="block text-sm font-medium mb-2">Message</label>
                 <textarea
-                  id="message"
-                  name="message"
                   rows={4}
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-all resize-none"
-                  placeholder="Tell me about your project or inquiry..."
+                  name="message"
+                  className="
+                    w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 resize-none
+                    focus:ring-2 focus:border-white 
+                    dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-400
+                  "
                 ></textarea>
               </div>
 
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center space-x-2 disabled:opacity-60"
+                className="
+                  w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold 
+                  hover:bg-blue-50 transition-colors disabled:opacity-60 
+                  flex items-center justify-center space-x-2
+                  dark:bg-blue-500 dark:text-white dark:hover:bg-blue-600
+                "
               >
                 <span>{status === 'sending' ? 'Sending...' : 'Send Message'}</span>
                 <Send className="w-5 h-5" />
               </button>
 
               {status === 'success' && (
-                <p className="text-green-200 mt-2">Message sent — thank you! I will reply soon.</p>
+                <p className="text-green-200 dark:text-green-400 mt-2">
+                  Message sent — thank you! I'll reply soon.
+                </p>
               )}
-
               {status === 'error' && (
-                <p className="text-red-200 mt-2">Something went wrong. Please try again later.</p>
+                <p className="text-red-200 dark:text-red-400 mt-2">
+                  Something went wrong. Please try again.
+                </p>
               )}
             </form>
           </div>

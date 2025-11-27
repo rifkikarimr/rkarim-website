@@ -8,9 +8,9 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
-function App() {
+export default function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
       <Header />
       <main>
         <Hero />
@@ -25,5 +25,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
