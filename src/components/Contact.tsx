@@ -6,9 +6,55 @@ export default function Contact() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const validateForm = () => {
+    if (!formRef.current) return false;
+
+    const form = formRef.current;
+    const name = form.user_name.value.trim();
+    const email = form.user_email.value.trim();
+    const message = form.message.value.trim();
+
+    let valid = true;
+    const newErrors = { name: "", email: "", message: "" };
+
+    if (!name) {
+      newErrors.name = "Name is required.";
+      valid = false;
+    }
+
+    if (!email) {
+      newErrors.email = "Email is required.";
+      valid = false;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = "Invalid email format.";
+      valid = false;
+    }
+
+    if (!message) {
+      newErrors.message = "Message cannot be empty.";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
+
+    // VALIDATION FIRST
+    if (!validateForm()) {
+      setStatus('error');
+      return;
+    }
+
     setStatus('sending');
 
     try {
@@ -21,8 +67,12 @@ export default function Contact() {
       }
 
       await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+
       setStatus('success');
       formRef.current.reset();
+
+      // Clear errors after success
+      setErrors({ name: "", email: "", message: "" });
     } catch (err) {
       console.error('Failed to send message', err);
       setStatus('error');
@@ -38,7 +88,7 @@ export default function Contact() {
         dark:from-gray-900 dark:to-black dark:text-gray-100
       "
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px6">
         <h2 className="text-4xl font-bold text-center mb-4">Get In Touch</h2>
 
         <p className="text-center text-blue-100 dark:text-gray-300 mb-12 max-w-2xl mx-auto text-lg">
@@ -49,7 +99,7 @@ export default function Contact() {
 
           {/* --- SOCIAL GRID --- */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-
+            
             {/* Email */}
             <a
               href="mailto:rifkikarimr@gmail.com"
@@ -150,6 +200,7 @@ export default function Contact() {
 
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
 
+              {/* NAME */}
               <div>
                 <label className="block text-sm font-medium mb-2">Name</label>
                 <input
@@ -161,8 +212,10 @@ export default function Contact() {
                     dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-400
                   "
                 />
+                {errors.name && <p className="text-red-300 text-sm mt-1">{errors.name}</p>}
               </div>
 
+              {/* EMAIL */}
               <div>
                 <label className="block text-sm font-medium mb-2">Email</label>
                 <input
@@ -174,8 +227,10 @@ export default function Contact() {
                     dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-400
                   "
                 />
+                {errors.email && <p className="text-red-300 text-sm mt-1">{errors.email}</p>}
               </div>
 
+              {/* MESSAGE */}
               <div>
                 <label className="block text-sm font-medium mb-2">Message</label>
                 <textarea
@@ -187,6 +242,7 @@ export default function Contact() {
                     dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-400
                   "
                 ></textarea>
+                {errors.message && <p className="text-red-300 text-sm mt-1">{errors.message}</p>}
               </div>
 
               <button
@@ -210,11 +266,12 @@ export default function Contact() {
               )}
               {status === 'error' && (
                 <p className="text-red-200 dark:text-red-400 mt-2">
-                  Something went wrong. Please try again.
+                  Please fill all fields correctly.
                 </p>
               )}
             </form>
           </div>
+
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { Cloud, Award, Code, ArrowRight } from 'lucide-react';
+import { Award, Code, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
@@ -11,37 +11,48 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center text-center"
         >
+
           {/* Avatar + Badge */}
           <div className="mb-8 relative">
             <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="w-32 h-32 bg-blue-600 dark:bg-blue-500 rounded-full flex items-center justify-center shadow-xl"
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="w-36 h-36 rounded-full overflow-hidden shadow-xl border-4 border-blue-600 dark:border-blue-400"
             >
-              <Cloud className="w-16 h-16 text-white" />
+              <img
+                src="/images/profile_picture.jpeg"
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
             </motion.div>
 
-            <div className="absolute -bottom-2 -right-2 bg-white dark:bg-gray-700 rounded-full p-2 shadow-lg">
+            {/* Badge on photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+              className="absolute -bottom-2 -right-2 bg-white dark:bg-gray-700 rounded-full p-2 shadow-lg"
+            >
               <Award className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-            </div>
+            </motion.div>
           </div>
 
           {/* Name */}
-          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-4">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-3">
             Rifki Karim R
           </h1>
 
           {/* Role / Title */}
-          <p className="text-2xl md:text-3xl font-semibold text-blue-700 dark:text-blue-300 mb-6">
+          <p className="text-2xl md:text-3xl font-bold text-blue-700 dark:text-blue-300 mb-6">
             Cloud & DevSecOps
           </p>
 
           {/* Summary */}
           <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed mb-10">
-            Experienced in architecting multi-cloud infrastructure, DevSecOps pipelines, 
-            and secure distributed systems. Skilled at translating complex cloud 
-            strategies into scalable and reliable real-world implementations.
+            Experienced in architecting multi-cloud infrastructure, DevSecOps pipelines,
+            and secure distributed systems. Skilled at transforming complex cloud strategies
+            into scalable, reliable solutions across AWS, GCP, and Azure.
           </p>
 
           {/* Badges */}

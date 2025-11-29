@@ -6,7 +6,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
 
-  // Ambil theme & toggleTheme dari Context
   const { theme, toggleTheme } = useTheme();
 
   const navItems = [
@@ -18,7 +17,7 @@ export default function Header() {
     "Contact",
   ];
 
-  // Detect active section on scroll
+  // Track active section during scroll
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) => item.toLowerCase());
@@ -34,11 +33,13 @@ export default function Header() {
           }
         }
       }
+
       setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -107,9 +108,9 @@ export default function Header() {
               )}
             </button>
 
-            {/* Resume CTA */}
+            {/* Resume Button (Desktop) */}
             <a
-              href="/resume.pdf"
+              href="/CV_Rifki_Karim_R.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
@@ -151,7 +152,7 @@ export default function Header() {
               );
             })}
 
-            {/* Theme Toggle Mobile */}
+            {/* Theme Toggle (Mobile) */}
             <button
               onClick={toggleTheme}
               className="w-full flex items-center justify-center gap-2 bg-gray-200 dark:bg-gray-700 py-3 rounded-lg"
@@ -167,11 +168,10 @@ export default function Header() {
               )}
             </button>
 
-            {/* Resume CTA */}
+            {/* Resume Button (Mobile) */}
             <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/CV_Rifki_Karim_R.pdf"
+              download="Rifki_Karim_Resume.pdf"
               className="block w-full bg-blue-600 text-white px-4 py-3 rounded-lg text-center font-semibold hover:bg-blue-700 transition-colors"
             >
               Resume
