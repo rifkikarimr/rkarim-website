@@ -21,7 +21,7 @@ export default function Hero() {
               className="w-36 h-36 rounded-full overflow-hidden shadow-xl border-4 border-blue-600 dark:border-blue-400"
             >
               <img
-                src="/images/profile_picture.jpeg"
+                src="/profile_picture.jpeg"
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
