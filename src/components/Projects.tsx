@@ -45,7 +45,7 @@ const projects: Project[] = [
     name: 'Secure SFTP & Encryption Pipeline',
     description:
       'Developed a secure end-to-end encrypted file transfer pipeline for sensitive enterprise data processing and SAP integration.',
-    technologies: ['SFTP', 'AES Encryption', 'SAP', 'Python', 'AWS S3', 'Security Engineering'],
+    technologies: ['SFTP', 'AES Encryption', 'SAP', 'Bash Script', 'AWS S3', 'Security Engineering'],
     outcome:
       'Processed 1TB+ of daily encrypted data transfers with zero security incidents.',
     link: 'https://github.com/rifkikarimr/tf-file-sftp.git',
