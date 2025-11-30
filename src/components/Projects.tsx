@@ -68,11 +68,13 @@ const projects: Project[] = [
     technologies: [
       'MLflow',
       'DVC',
-      'FastAPI',
+      'Jenkins',
       'Docker',
-      'GitHub Actions',
+      'Flask',
       'Machine Learning',
       'Python',
+      'Artifact Registry',
+      'Cloud Run'
     ],
     outcome:
       'Delivered a fully automated and reproducible ML workflow.',
