@@ -170,8 +170,8 @@ export default function Header() {
 
             {/* Resume Button (Mobile) */}
             <a
-              href="/CV_Rifki_Karim_R.pdf"
-              download="Rifki_Karim_Resume.pdf"
+              href="/resume.pdf"
+              download="resume.pdf"
               className="block w-full bg-blue-600 text-white px-4 py-3 rounded-lg text-center font-semibold hover:bg-blue-700 transition-colors"
             >
               Resume
