@@ -110,7 +110,7 @@ export default function Header() {
 
             {/* Resume Button (Desktop) */}
             <a
-              href="/CV_Rifki_Karim_R.pdf"
+              href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
